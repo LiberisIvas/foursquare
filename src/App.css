@@ -1,0 +1,88 @@
+body {
+  background-image: url("bg.png");
+  background-repeat: repeat;
+  background-color: hsla(49, 98%, 65%, 0.986);
+  /* height: 100%; */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  margin: 10px;
+}
+#images {
+  display: static;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s;
+  height: 120px;
+  margin-left: 25px;
+  margin-right: 0;
+}
+.btn-floating {
+  background-color:rgba(48, 128, 248, 0.753);
+  color: black;
+}
+btn-floating:hover {
+  opacity:0.1 !important;
+  overflow: hidden;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg);
+  };
+}
+
+.more {
+  display: none;
+}
+input, button {
+  margin: 2px;
+}
+button {
+  border-radius: 35%;
+}
+.list-group {
+  margin-top: 8px;
+}
+input[type="text"].form-control {
+
+  background-color: rgb(253, 255, 253, 0.1);
+  color:rgba(48, 128, 248, 0.753);
+  font-weight: bold;
+
+}
+.list-group-item {
+  background-color: rgb(253, 255, 253, 0.1);
+  color:rgba(48, 128, 248, 0.753);
+}
+.inputdiv {
+  margin:  70px;
+}
+.welcome {
+  color:rgba(48, 128, 248, 0.753);
+  font-weight: bold;
+} 
+.name-venue{
+  display: block;
+  font-weight: bold;
+}
+.address-venue{
+  display: block;
+  margin-top: 10px;
+}
+p {
+  font-weight: normal;
+}
+.recommend {
+    color:rgba(48, 128, 248, 0.753);
+    font-weight: bold;
+  }
+ .selection, select, option {
+    background-color: rgb(253, 255, 253, 0.1);
+    color:rgba(48, 128, 248, 0.753);
+    font-weight: bold;
+    border: 0 !important;
+    -webkit-appearance: none;
+    background: rgb(253, 255, 253, 0.1);
+  }
