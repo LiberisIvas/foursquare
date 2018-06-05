@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import CLIENT from '../App';
+import {CLIENT} from '../App';
 
 
 class Link extends React.Component {
