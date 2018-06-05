@@ -71,6 +71,10 @@ input[type="text"].form-control {
   display: block;
   margin-top: 10px;
 }
+.link-venue {
+  display: inline;
+  margin-top: 10px;
+}
 p {
   font-weight: normal;
 }

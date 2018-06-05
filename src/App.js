@@ -4,22 +4,23 @@ import './App.css';
 import axios from "axios";
 import Venue from './components/Venue';
 
-
-const API_DEFAULT = "https://api.foursquare.com/v2/venues/explore?client_secret=ISV2BFBDZIZL1WNG00D13F4CSLRXIARM0SXTSUU0KZSWWKMG&client_id=KVQIDLMIY4F0BIBEPQNSVQUSABBANRITCWD2ZL2MDPEGH1FM&v=20161101";
-
+const API_DEFAULT = "https://api.foursquare.com/v2/venues/explore?v=20161101";
+const CLIENT = "&client_secret=ISV2BFBDZIZL1WNG00D13F4CSLRXIARM0SXTSUU0KZSWWKMG&client_id=KVQIDLMIY4F0BIBEPQNSVQUSABBANRITCWD2ZL2MDPEGH1FM";
+        
 class App extends Component {
   state = {
     near:"",
     limit: 3,
     list: [],
-    wish: ""
+    wish: "",    
   }
 
   
   render() {
-    let printlist = this.state.list.map (
+    const listP = this.state.list;
+    let printlist = listP.map (
       (value, index)=> {
-        return <Venue value={value} key={index} />;
+        return <Venue value={value} key={index} state={{link:'my name'}}/>;
       }
     )
 
@@ -31,7 +32,7 @@ class App extends Component {
         </div>
         <div className="row">
           <div className="col l6 inputdiv push-l2 center-align">
-            <input onChange={this.placeChanged} type="text" className="form-control d-inline" placeholder="City: " value={this.state.near}/>
+            <input onChange={ this.placeChanged } type="text" className="form-control d-inline" placeholder="City: " value={this.state.near}/>
             <select className="form-control selection" onChange={this.wishChanged}>
               <option value="food">Food</option>
               <option value="drinks">Drinks</option>
@@ -42,7 +43,7 @@ class App extends Component {
               <option value="trending">Trending</option>
             </select>
             <div className="left-align">
-              <button type="button" className=" btn-floating btn-large scale-transition waves-effect waves-light"onClick={this.searchHandler}> Search </button>
+              <button type="button" className=" btn-floating btn-large scale-transition waves-effect waves-light"onClick={this.getResults}> Search </button>
             </div>
           </div>
           <div className="row">
@@ -57,7 +58,7 @@ class App extends Component {
            {printlist}
           </div>
           <div className="align-right">
-            <button type="button" className="btn-floating btn-large scale-transition waves-effect waves-light" onClick={this.moreResults} value={this.state.limit}> + </button>
+          { this.state.list.length > 0 ?  <button type="button" className="btn-floating btn-large scale-transition waves-effect waves-light" onClick={this.moreResults} value={this.state.limit}> + </button> : null } 
           </div>
         </div>   
 
@@ -71,11 +72,11 @@ class App extends Component {
       near: event.target.value
     })
   };
-
+//console.log(event)
   wishChanged = event => {
     this.setState({
       wish: event.target.value
-    } );
+    });
   };
 
 moreResults = event => {
@@ -84,38 +85,26 @@ moreResults = event => {
   }, this.getResults );
 };
 
-
-
-searchHandler = () => {
-    this.getResults(); 
-}
-
-
 getResults=()=> { 
   
   let near = this.state.near;
   let limit = this.state.limit;
   let wish = this.state.wish;
   // console.log(wish);  
-    axios.get(API_DEFAULT+ '&limit='+ limit +'&near='+ near +'&section='+wish)
+    axios.get(API_DEFAULT+CLIENT+ '&limit='+ limit +'&near='+ near +'&section='+wish)
     .then(res=> {
-      console.log( res)
       let items = res.data.response.groups[0].items;
-      console.log(items);
+      // console.log(items);
       this.setState({
         list:items
+        // ?????????
       })
     })
     .catch(err=> {
       console.log(err)
     })
-
-}
-
-  componentDidMount(){
-    this.getResults(); 
-  }  
+  }
 }
 
 export default App;
-
+export {CLIENT};
