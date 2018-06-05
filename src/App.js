@@ -4,6 +4,9 @@ import './App.css';
 import axios from "axios";
 import Venue from './components/Venue';
 
+
+//Get req code 429. To be updated
+
 const API_DEFAULT = "https://api.foursquare.com/v2/venues/explore?v=20161101";
 const CLIENT = "&client_secret=ISV2BFBDZIZL1WNG00D13F4CSLRXIARM0SXTSUU0KZSWWKMG&client_id=KVQIDLMIY4F0BIBEPQNSVQUSABBANRITCWD2ZL2MDPEGH1FM";
         
